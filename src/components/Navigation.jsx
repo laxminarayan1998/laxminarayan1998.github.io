@@ -1,132 +1,128 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "experience", label: "Work" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Get all sections
-      const sections = ["home", "experience", "skills", "projects", "contact"];
-
-      // Find the current section
+      const sections = ["home", "experience", "education", "skills", "projects", "contact"];
       for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
             setActiveSection(section);
             break;
           }
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Height of your fixed navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
     }
-    setActiveSection(sectionId);
+    setActiveSection(id);
     setIsMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0a0f0d]/95 backdrop-blur-md py-4"
-          : "bg-transparent py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-2xl font-bold relative">
-            <span className="text-[#4ade80]">NR</span>
-            <span className="text-white">YN</span>
-            <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#4ade80]/20" />
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {["home", "experience", "skills", "projects", "contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`relative text-sm tracking-wider hover:-translate-y-0.5 transition-all ${
-                  activeSection === item ? "text-[#4ade80]" : "text-gray-300"
-                }`}
-              >
-                {item.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden relative z-50"
-            aria-label="Toggle menu"
-          >
-            <div
-              className={`w-6 h-0.5 bg-current transition-all mb-1.5 ${
-                isMenuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-current transition-all mb-1.5 ${
-                isMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-current transition-all ${
-                isMenuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden fixed inset-0 bg-[#0a0f0d]/98 backdrop-blur-lg transition-all duration-300 ${
-            isMenuOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible pointer-events-none"
+    <>
+      {/* Desktop nav */}
+      <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-5 px-4 pointer-events-none">
+        <motion.nav
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={`hidden md:flex pointer-events-auto items-center gap-1 px-2 py-1.5 rounded-full border transition-all duration-500 ${
+            scrolled
+              ? "bg-[#0a0f0d]/90 backdrop-blur-2xl border-white/10 shadow-2xl shadow-black/50"
+              : "bg-[#0a0f0d]/40 backdrop-blur-md border-white/5"
           }`}
         >
-          <div className="flex flex-col items-center justify-center h-full space-y-8">
-            {["home", "experience", "skills", "projects", "contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`text-2xl font-light tracking-wider hover:text-[#4ade80] transition-colors ${
-                  activeSection === item ? "text-[#4ade80]" : "text-gray-300"
-                }`}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 ${
+                activeSection === item.id ? "text-[#0a0f0d]" : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {activeSection === item.id && (
+                <motion.div
+                  layoutId="activeNav"
+                  className="absolute inset-0 bg-[#4ade80] rounded-full"
+                  transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                />
+              )}
+              <span className="relative z-10">{item.label}</span>
+            </button>
+          ))}
+        </motion.nav>
       </div>
-    </nav>
+
+      {/* Mobile: top-right hamburger */}
+      <div className="fixed top-5 right-5 z-50 md:hidden">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="w-10 h-10 rounded-full bg-[#0a0f0d]/80 backdrop-blur border border-white/10 flex flex-col items-center justify-center gap-1.5"
+          aria-label="Menu"
+        >
+          <motion.span
+            animate={{ rotate: isMenuOpen ? 45 : 0, y: isMenuOpen ? 6 : 0 }}
+            className="block w-5 h-0.5 bg-white origin-center"
+          />
+          <motion.span
+            animate={{ opacity: isMenuOpen ? 0 : 1 }}
+            className="block w-5 h-0.5 bg-white"
+          />
+          <motion.span
+            animate={{ rotate: isMenuOpen ? -45 : 0, y: isMenuOpen ? -6 : 0 }}
+            className="block w-5 h-0.5 bg-white origin-center"
+          />
+        </button>
+      </div>
+
+      {/* Mobile menu overlay */}
+      <motion.div
+        initial={false}
+        animate={{ opacity: isMenuOpen ? 1 : 0, pointerEvents: isMenuOpen ? "auto" : "none" }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-40 bg-[#0a0f0d]/98 backdrop-blur-xl md:hidden flex flex-col items-center justify-center gap-6"
+      >
+        {navItems.map((item, i) => (
+          <motion.button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : 20 }}
+            transition={{ delay: i * 0.05 }}
+            className={`text-3xl font-bold tracking-tight transition-colors ${
+              activeSection === item.id ? "text-[#4ade80]" : "text-gray-400 hover:text-white"
+            }`}
+          >
+            {item.label}
+          </motion.button>
+        ))}
+      </motion.div>
+    </>
   );
 };
 

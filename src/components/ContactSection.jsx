@@ -1,165 +1,142 @@
-import React from 'react';
-import {
-  Github,
-  Linkedin,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
-  MessageCircle,
-  ArrowUpRight,
-} from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Instagram, Mail, Phone, MessageCircle, MapPin, ArrowUpRight } from "lucide-react";
 
 const ContactSection = () => {
-  const phoneNumber = "+919776229989";
   const email = "laxminarayan1998@icloud.com";
+  const phone = "+919776229989";
 
-  const socials = [
+  const contacts = [
     {
-      icon: Github,
-      link: "https://github.com/laxminarayan1998",
-      label: "GitHub",
-      username: "@laxminarayan1998"
+      icon: Mail,
+      label: "Email",
+      value: email,
+      href: `mailto:${email}`,
     },
     {
-      icon: Linkedin,
-      link: "https://www.linkedin.com/in/laxminarayan1998",
-      label: "LinkedIn",
-      username: "laxminarayan1998"
+      icon: Phone,
+      label: "Phone",
+      value: "+91 977-622-9989",
+      href: `tel:${phone}`,
     },
     {
-      icon: Instagram,
-      link: "https://www.instagram.com/nryn_das",
-      label: "Instagram",
-      username: "@nryn_das"
-    }
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "Message directly",
+      href: `https://wa.me/${phone.replace(/\D/g, "")}`,
+    },
   ];
 
-  const handleWhatsAppClick = () => {
-    const cleanNumber = phoneNumber.replace(/\D/g, "");
-    window.open(`https://wa.me/${cleanNumber}`, "_blank");
-  };
-
-  const handleLocationClick = () => {
-    window.open("https://maps.google.com/?q=Bangalore,India", "_blank");
-  };
+  const socials = [
+    { icon: Github, label: "GitHub", handle: "@laxminarayan1998", href: "https://github.com/laxminarayan1998" },
+    { icon: Linkedin, label: "LinkedIn", handle: "laxminarayan1998", href: "https://www.linkedin.com/in/laxminarayan1998" },
+    { icon: Instagram, label: "Instagram", handle: "@nryn_das", href: "https://www.instagram.com/nryn_das" },
+  ];
 
   return (
-    <section id="contact" className="relative min-h-screen bg-black py-24 overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-radial from-green-500/10 via-transparent to-transparent opacity-50" />
-      
-      {/* Content Container */}
-      <div className="relative max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">
-            Let's Connect
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Have an exciting project or opportunity? I'm always open to new ideas and collaborations.
-          </p>
-        </div>
+    <section id="contact" className="relative bg-[#0a0f0d] py-32 px-6 md:px-16 overflow-hidden">
 
-        {/* Main Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Contact Methods */}
-          <div className="lg:col-span-2 grid gap-6">
-            {/* Email Card */}
-            <a
-              href={`mailto:${email}`}
-              className="group block p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-green-500/50 transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
+      {/* Ambient glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none">
+        <div
+          className="w-full h-full"
+          style={{
+            background: "radial-gradient(ellipse, rgba(74,222,128,0.07) 0%, transparent 70%)",
+            filter: "blur(40px)",
+          }}
+        />
+      </div>
+
+      <div className="relative max-w-5xl mx-auto">
+
+        {/* Big heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-20"
+        >
+          <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase font-mono mb-6">Contact</p>
+          <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
+            Let's build
+            <br />
+            <span className="text-[#4ade80]">something.</span>
+          </h2>
+          <p className="text-gray-500 text-lg mt-6 max-w-lg">
+            Have a project, an idea, or just want to talk tech? I'm open to it.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          {/* Contact cards */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-3"
+          >
+            {contacts.map((item, i) => (
+              <a
+                key={i}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-5 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:border-[#4ade80]/30 hover:bg-[#4ade80]/[0.04] transition-all duration-400"
+              >
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-green-500/10 text-green-500">
-                    <Mail className="w-6 h-6" />
+                  <div className="w-10 h-10 rounded-xl bg-[#4ade80]/10 flex items-center justify-center group-hover:bg-[#4ade80]/20 transition-colors">
+                    <item.icon className="w-4.5 h-4.5 text-[#4ade80]" style={{ width: 18, height: 18 }} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white text-lg">Email</h3>
-                    <p className="text-gray-400 mt-1">{email}</p>
+                    <p className="text-xs font-mono text-gray-500 uppercase tracking-wider">{item.label}</p>
+                    <p className="text-white text-sm font-medium mt-0.5">{item.value}</p>
                   </div>
                 </div>
-                <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-green-500 transition-colors" />
-              </div>
-            </a>
-
-            {/* Phone & WhatsApp Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <a
-                href={`tel:${phoneNumber}`}
-                className="group block p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-green-500/50 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-green-500/10 text-green-500">
-                      <Phone className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white text-lg">Phone</h3>
-                      <p className="text-gray-400 mt-1">
-                        {phoneNumber.replace(/(\+\d{2})(\d{3})(\d{3})(\d{4})/, "$1 $2-$3-$4")}
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-green-500 transition-colors" />
-                </div>
+                <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-[#4ade80] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
               </a>
+            ))}
 
-              <button
-                onClick={handleWhatsAppClick}
-                className="group block p-8 rounded-2xl bg-white/5 backdrop-blur border border-white/10 hover:border-green-500/50 transition-all duration-300 text-left"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-green-500/10 text-green-500">
-                      <MessageCircle className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white text-lg">WhatsApp</h3>
-                      <p className="text-gray-400 mt-1">Message directly</p>
-                    </div>
-                  </div>
-                  <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-green-500 transition-colors" />
-                </div>
-              </button>
+            {/* Location pill */}
+            <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-white/[0.07] bg-white/[0.02]">
+              <MapPin className="w-4 h-4 text-[#4ade80]" />
+              <span className="text-gray-400 text-sm">Bangalore, India</span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Social Links Panel */}
-          <div className="rounded-2xl bg-white/5 backdrop-blur border border-white/10 p-8">
-            <h3 className="font-semibold text-white text-lg mb-6">Social Profiles</h3>
-            <div className="space-y-4">
-              {socials.map((social, index) => (
+          {/* Socials */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-7"
+          >
+            <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Find me online</p>
+            <div className="space-y-3">
+              {socials.map((s, i) => (
                 <a
-                  key={index}
-                  href={social.link}
+                  key={i}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-green-500/10 border border-white/10 hover:border-green-500/30 transition-all duration-300"
+                  className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] hover:bg-[#4ade80]/[0.06] border border-transparent hover:border-[#4ade80]/20 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <social.icon className="w-5 h-5 text-gray-400 group-hover:text-green-500 transition-colors" />
+                    <s.icon className="w-4.5 h-4.5 text-gray-500 group-hover:text-[#4ade80] transition-colors" style={{ width: 18, height: 18 }} />
                     <div>
-                      <p className="text-white font-medium">{social.label}</p>
-                      <p className="text-gray-400 text-sm">{social.username}</p>
+                      <p className="text-white text-sm font-medium">{s.label}</p>
+                      <p className="text-gray-600 text-xs font-mono">{s.handle}</p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover:text-green-500 transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-[#4ade80] transition-colors" />
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Location Button */}
-        <button
-          onClick={handleLocationClick}
-          className="mt-8 mx-auto flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-green-500/10 border border-white/10 hover:border-green-500/30 transition-all duration-300"
-        >
-          <MapPin className="w-5 h-5 text-green-500" />
-          <span className="text-white">Bangalore, India</span>
-        </button>
       </div>
     </section>
   );
