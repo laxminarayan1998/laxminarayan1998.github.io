@@ -69,12 +69,12 @@ const bentoItems = [
 const SkillBar = ({ name, level }) => (
   <div className="mb-3">
     <div className="flex justify-between items-center mb-1.5">
-      <span className="text-xs text-gray-400 font-medium">{name}</span>
-      <span className="text-xs font-mono text-[#4ade80]">{level}%</span>
+      <span className="text-xs font-medium text-gray-700 dark:text-gray-200">{name}</span>
+      <span className="text-xs font-mono text-green-600 dark:text-[#4ade80]">{level}%</span>
     </div>
-    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+    <div className="h-1.5 rounded-full overflow-hidden bg-gray-200 dark:bg-white/10">
       <motion.div
-        className="h-full bg-gradient-to-r from-[#4ade80] to-[#4ade80]/60 rounded-full"
+        className="h-full rounded-full bg-gradient-to-r from-green-600 to-green-400 dark:from-[#4ade80] dark:to-[#4ade80]/70"
         initial={{ width: 0 }}
         whileInView={{ width: `${level}%` }}
         viewport={{ once: true }}
@@ -86,10 +86,9 @@ const SkillBar = ({ name, level }) => (
 
 const TechnicalSection = () => {
   return (
-    <section id="skills" className="relative bg-[#0a0f0d] py-32 px-6 md:px-16">
+    <section id="skills" className="relative py-32 px-6 md:px-16 transition-colors duration-300 bg-white dark:bg-[#0a0f0d]">
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,13 +96,12 @@ const TechnicalSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase font-mono mb-4">Skills</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+          <p className="text-xs tracking-[0.25em] uppercase font-mono font-bold mb-4 text-green-600 dark:text-[#4ade80]">Skills</p>
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
             What I work with
           </h2>
         </motion.div>
 
-        {/* Bento grid */}
         <div className="grid grid-cols-12 gap-4 md:gap-5">
           {bentoItems.map((item, i) => (
             <motion.div
@@ -114,50 +112,45 @@ const TechnicalSection = () => {
               transition={{ duration: 0.55, delay: i * 0.07 }}
               className={`${item.col} group relative overflow-hidden rounded-2xl p-6 border transition-all duration-500
                 ${item.highlight
-                  ? "bg-[#4ade80]/[0.07] border-[#4ade80]/25 hover:border-[#4ade80]/50"
-                  : item.accent
-                  ? "bg-white/[0.03] border-white/10 hover:border-[#4ade80]/30"
-                  : "bg-white/[0.02] border-white/[0.07] hover:border-[#4ade80]/25"
+                  ? "bg-gradient-to-br from-green-50 to-white border-green-200 shadow-sm shadow-green-200/60 hover:border-green-400 hover:shadow-md hover:shadow-green-500/10 dark:bg-[#4ade80]/[0.07] dark:from-transparent dark:to-transparent dark:border-[#4ade80]/25 dark:shadow-none dark:hover:border-[#4ade80]/50"
+                  : "bg-white border-gray-200 shadow-sm shadow-gray-100 hover:border-green-400 hover:shadow-md hover:shadow-green-500/8 dark:bg-white/[0.04] dark:shadow-none dark:border-white/[0.14] dark:hover:border-[#4ade80]/40"
                 }`}
             >
-              {/* Top glow */}
               <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                ${item.highlight ? "via-[#4ade80]/60" : "via-[#4ade80]/30"}`} />
+                ${item.highlight ? "via-green-400/50 dark:via-[#4ade80]/60" : "via-green-300/40 dark:via-[#4ade80]/30"}`} />
 
-              {/* Category label */}
               <div className="flex items-center justify-between mb-3">
-                <p className={`text-xs font-mono tracking-widest uppercase ${item.highlight ? "text-[#4ade80]" : "text-gray-500"}`}>
+                <p className={`text-xs font-mono tracking-widest uppercase
+                  ${item.highlight ? "text-green-600 dark:text-[#4ade80]" : "text-gray-500 dark:text-gray-400"}`}>
                   {item.category}
                 </p>
                 {item.highlight && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#4ade80]/20 text-[#4ade80] font-mono border border-[#4ade80]/25">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full font-mono border
+                    bg-green-100 text-green-700 border-green-200
+                    dark:bg-[#4ade80]/20 dark:text-[#4ade80] dark:border-[#4ade80]/25">
                     ✦ Featured
                   </span>
                 )}
               </div>
 
-              {/* Description */}
               {item.description && (
-                <p className="text-gray-500 text-xs leading-relaxed mb-5">
+                <p className="text-xs leading-relaxed mb-5 text-gray-600 dark:text-gray-400">
                   {item.description}
                 </p>
               )}
 
-              {/* Skill bars */}
               <div>
                 {item.skills.map((skill, si) => (
                   <SkillBar key={si} name={skill.name} level={skill.level} />
                 ))}
               </div>
 
-              {/* Tags (for flutter card) */}
               {item.tags && (
                 <div className="flex flex-wrap gap-1.5 mt-4">
                   {item.tags.map((tag, ti) => (
-                    <span
-                      key={ti}
-                      className="px-2.5 py-0.5 text-[11px] rounded-full bg-white/5 text-gray-400 border border-white/[0.07] font-mono"
-                    >
+                    <span key={ti} className="px-2.5 py-1 text-[11px] rounded-full font-mono font-medium
+                      bg-gray-100 text-gray-700 border border-gray-300
+                      dark:bg-white/10 dark:text-gray-200 dark:border-white/[0.2]">
                       {tag}
                     </span>
                   ))}

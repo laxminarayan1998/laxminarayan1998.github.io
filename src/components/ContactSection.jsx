@@ -7,24 +7,9 @@ const ContactSection = () => {
   const phone = "+919776229989";
 
   const contacts = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: email,
-      href: `mailto:${email}`,
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 977-622-9989",
-      href: `tel:${phone}`,
-    },
-    {
-      icon: MessageCircle,
-      label: "WhatsApp",
-      value: "Message directly",
-      href: `https://wa.me/${phone.replace(/\D/g, "")}`,
-    },
+    { icon: Mail, label: "Email", value: email, href: `mailto:${email}` },
+    { icon: Phone, label: "Phone", value: "+91 977-622-9989", href: `tel:${phone}` },
+    { icon: MessageCircle, label: "WhatsApp", value: "Message directly", href: `https://wa.me/${phone.replace(/\D/g, "")}` },
   ];
 
   const socials = [
@@ -34,22 +19,17 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="relative bg-[#0a0f0d] py-32 px-6 md:px-16 overflow-hidden">
+    <section id="contact" className="relative py-32 px-6 md:px-16 overflow-hidden transition-colors duration-300 bg-white dark:bg-[#0a0f0d]">
 
       {/* Ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none">
-        <div
-          className="w-full h-full"
-          style={{
-            background: "radial-gradient(ellipse, rgba(74,222,128,0.07) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
+        <div className="w-full h-full"
+          style={{ background: "radial-gradient(ellipse, rgba(74,222,128,0.06) 0%, transparent 70%)", filter: "blur(40px)" }}
         />
       </div>
 
       <div className="relative max-w-5xl mx-auto">
 
-        {/* Big heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,13 +37,13 @@ const ContactSection = () => {
           transition={{ duration: 0.7 }}
           className="mb-20"
         >
-          <p className="text-[#4ade80] text-xs tracking-[0.25em] uppercase font-mono mb-6">Contact</p>
-          <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
+          <p className="text-xs tracking-[0.25em] uppercase font-mono font-bold mb-6 text-green-600 dark:text-[#4ade80]">Contact</p>
+          <h2 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
             Let's build
             <br />
-            <span className="text-[#4ade80]">something.</span>
+            <span className="text-green-600 dark:text-[#4ade80]">something.</span>
           </h2>
-          <p className="text-gray-500 text-lg mt-6 max-w-lg">
+          <p className="text-lg mt-6 max-w-lg text-gray-500">
             Have a project, an idea, or just want to talk tech? I'm open to it.
           </p>
         </motion.div>
@@ -79,30 +59,32 @@ const ContactSection = () => {
             className="space-y-3"
           >
             {contacts.map((item, i) => (
-              <a
-                key={i}
-                href={item.href}
+              <a key={i} href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-5 rounded-xl border border-white/[0.07] bg-white/[0.02] hover:border-[#4ade80]/30 hover:bg-[#4ade80]/[0.04] transition-all duration-400"
+                className="group flex items-center justify-between p-5 rounded-xl border transition-all duration-400
+                  bg-white border-gray-200 shadow-sm shadow-gray-100 hover:border-green-300 hover:shadow-md hover:shadow-green-500/8
+                  dark:bg-white/[0.02] dark:border-white/[0.14] dark:shadow-none dark:hover:border-[#4ade80]/30 dark:hover:bg-[#4ade80]/[0.04]"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#4ade80]/10 flex items-center justify-center group-hover:bg-[#4ade80]/20 transition-colors">
-                    <item.icon className="w-4.5 h-4.5 text-[#4ade80]" style={{ width: 18, height: 18 }} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors
+                    bg-green-50 group-hover:bg-green-100 dark:bg-[#4ade80]/10 dark:group-hover:bg-[#4ade80]/20">
+                    <item.icon className="text-green-600 dark:text-[#4ade80]" style={{ width: 18, height: 18 }} />
                   </div>
                   <div>
-                    <p className="text-xs font-mono text-gray-500 uppercase tracking-wider">{item.label}</p>
-                    <p className="text-white text-sm font-medium mt-0.5">{item.value}</p>
+                    <p className="text-xs font-mono uppercase tracking-wider text-gray-400 dark:text-gray-500">{item.label}</p>
+                    <p className="text-sm font-semibold mt-0.5 text-gray-900 dark:text-white">{item.value}</p>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-[#4ade80] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                <ArrowUpRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5
+                  text-gray-300 group-hover:text-green-500 dark:text-gray-600 dark:group-hover:text-[#4ade80]" />
               </a>
             ))}
 
-            {/* Location pill */}
-            <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl border border-white/[0.07] bg-white/[0.02]">
-              <MapPin className="w-4 h-4 text-[#4ade80]" />
-              <span className="text-gray-400 text-sm">Bangalore, India</span>
+            <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl border
+              bg-white border-gray-200 dark:bg-white/[0.02] dark:border-white/[0.14]">
+              <MapPin className="w-4 h-4 text-green-600 dark:text-[#4ade80]" />
+              <span className="text-sm text-gray-500 dark:text-gray-400">Bangalore, India</span>
             </div>
           </motion.div>
 
@@ -112,26 +94,29 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-7"
+            className="rounded-2xl border p-7
+              bg-white border-gray-200 shadow-sm shadow-gray-100
+              dark:bg-white/[0.02] dark:border-white/[0.14] dark:shadow-none"
           >
-            <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-6">Find me online</p>
+            <p className="text-xs font-mono uppercase tracking-widest mb-6 text-gray-400 dark:text-gray-500">
+              Find me online
+            </p>
             <div className="space-y-3">
               {socials.map((s, i) => (
-                <a
-                  key={i}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-xl bg-white/[0.02] hover:bg-[#4ade80]/[0.06] border border-transparent hover:border-[#4ade80]/20 transition-all duration-300"
+                <a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
+                  className="group flex items-center justify-between p-4 rounded-xl border transition-all duration-300
+                    bg-transparent border-transparent hover:bg-green-50 hover:border-green-200
+                    dark:hover:bg-[#4ade80]/[0.06] dark:hover:border-[#4ade80]/20"
                 >
                   <div className="flex items-center gap-4">
-                    <s.icon className="w-4.5 h-4.5 text-gray-500 group-hover:text-[#4ade80] transition-colors" style={{ width: 18, height: 18 }} />
+                    <s.icon className="transition-colors" style={{ width: 18, height: 18 }}
+                      className="text-gray-400 group-hover:text-green-600 dark:text-gray-500 dark:group-hover:text-[#4ade80] transition-colors" />
                     <div>
-                      <p className="text-white text-sm font-medium">{s.label}</p>
-                      <p className="text-gray-600 text-xs font-mono">{s.handle}</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">{s.label}</p>
+                      <p className="text-xs font-mono text-gray-400 dark:text-gray-600">{s.handle}</p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-[#4ade80] transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-green-500 dark:text-gray-600 dark:group-hover:text-[#4ade80] transition-colors" />
                 </a>
               ))}
             </div>
