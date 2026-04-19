@@ -5,17 +5,17 @@ import appstore_icon from "/icons8-app-store.svg";
 
 const ProjectsGrid = () => {
   const projects = [
-//     {
-//       title: "PTT on Wave (Motorola)",
-//       description: `• Core functionality implemented natively in Android and iOS, migrating the frontend from ExtJS to Flutter.
-// • Utilized Method Channels for communication between Flutter and native platforms.
-// • Focused on creating a clean architecture with BLoC state management and reducing reliance on third-party libraries.
-// • Developed video calling features and embedded native views within the Flutter app.`,
-//       tags: ["Flutter", "Android", "iOS", "BLoC", "Method Channels"],
-//       playStore: null,
-//       appStore: null,
-//       featured: true,
-//     },
+    {
+      title: "PTT on Wave (Motorola)",
+      description: `• Core functionality implemented natively in Android and iOS, migrating the frontend from ExtJS to Flutter.
+• Utilized Method Channels for communication between Flutter and native platforms.
+• Focused on creating a clean architecture with BLoC state management and reducing reliance on third-party libraries.
+• Developed video calling features and embedded native views within the Flutter app.`,
+      tags: ["Flutter", "Android", "iOS", "BLoC", "Method Channels"],
+      playStore: null,
+      appStore: null,
+      featured: true,
+    },
     {
       title: "Instrucko",
       description: `• Designed for UK and India-based students, enabling parents to book on-demand classes for their children.

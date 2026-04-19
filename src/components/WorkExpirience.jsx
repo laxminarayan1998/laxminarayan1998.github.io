@@ -13,11 +13,10 @@ const WorkExperience = () => {
       location: "Bangalore, India",
       period: "May 2023 – Present",
       highlights: [
-        "Working with core functionality implemented natively in Android and iOS.",
-        "Migrating the app's frontend to Flutter using BLoC state management, ensuring clean and maintainable architecture.",
-        "Focused on minimizing reliance on third-party libraries by creating custom libraries to retain full control over app functionality.",
-        "Implemented video calling features, including embedding native views seamlessly within the Flutter app.",
-        "Utilized Method Channels to enable efficient communication between Flutter and native platforms.",
+        "Migrating the app's frontend from ExtJS to Flutter using BLoC state management, ensuring clean and maintainable architecture.",
+        "Built custom internal libraries to reduce third-party dependency and give the team full control over app behaviour.",
+        "Implemented video calling with native view embedding — bridging Flutter and native Android/iOS via Method Channels.",
+        "Actively explore and introduce better tooling and AI-assisted workflows to improve team productivity.",
       ],
     },
     {

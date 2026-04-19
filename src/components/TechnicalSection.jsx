@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Code, Database, Cloud, GitBranch, Wrench } from "lucide-react";
+import { Code, Database, Cloud, GitBranch, Wrench, Bot } from "lucide-react";
 
 const TechnicalSection = () => {
   const [activeCategory, setActiveCategory] = useState("languages");
@@ -91,6 +91,27 @@ const TechnicalSection = () => {
           name: "UI/UX Design",
           level: 75,
           description: "Adobe XD, Sketch, Photoshop",
+        },
+      ],
+    },
+    ai: {
+      icon: Bot,
+      title: "AI & Prompt Engineering",
+      skills: [
+        {
+          name: "Prompt Engineering",
+          level: 90,
+          description: "Crafting precise prompts to get real, usable output from LLMs",
+        },
+        {
+          name: "AI-assisted Dev",
+          level: 88,
+          description: "Using AI to write, debug, and ship code faster",
+        },
+        {
+          name: "Tool Building with AI",
+          level: 85,
+          description: "Building internal tools and automations powered by AI",
         },
       ],
     },

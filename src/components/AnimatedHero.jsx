@@ -39,7 +39,7 @@ const AnimatedHero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Simple badge */}
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#4ade80]/10 text-[#4ade80] text-sm mb-8 border border-[#4ade80]/20">
-            Full Stack App Developer
+            Flutter Developer · AI Tinkerer · Tool Builder
           </span>
 
           {/* Name and title */}
@@ -50,10 +50,9 @@ const AnimatedHero = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            Full-stack App Developer with 4+ years of experience in Flutter,
-            Node.js, Firebase, and cloud technologies. Passionate about building
-            robust, AI-driven apps with clean, maintainable code through SOLID
-            principles.
+            Flutter developer with 5+ years of experience. I love exploring new tools,
+            building internal tools that make teams move faster, and using AI to ship better products —
+            I know how to talk to AI and get real results out of it.
           </p>
 
           {/* Action buttons */}

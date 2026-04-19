@@ -16,6 +16,7 @@ import Navigation from "./Navigation";
 import ProjectGrid from "./ProjectGrid";
 import ContactSection from "./ContactSection";
 import WorkExperience from "./WorkExpirience";
+import EducationSection from "./EducationSection";
 
 const ModernPortfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -90,6 +91,9 @@ const ModernPortfolio = () => {
       {/* Work Experience */}
       <WorkExperience />
 
+      {/* Education Section */}
+      <EducationSection />
+
       {/* Technical Section */}
       <TechnicalSection />
 
@@ -102,7 +106,7 @@ const ModernPortfolio = () => {
       {/* Footer */}
       <footer className="py-8 text-center text-gray-500 border-t border-[#4ade80]/10">
         <div className="flex items-center justify-center gap-4">
-          <p>© 2025 NRYN.</p>
+          <p>© 2026 NRYN.</p>
           <span>•</span>
           <Link
             to="/privacy-policy"

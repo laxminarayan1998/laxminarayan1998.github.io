@@ -10,7 +10,7 @@ const Navigation = () => {
       setScrolled(window.scrollY > 50);
 
       // Get all sections
-      const sections = ["home", "skills", "projects", "contact"];
+      const sections = ["home", "experience", "skills", "projects", "contact"];
 
       // Find the current section
       for (const section of sections) {
@@ -66,7 +66,7 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {["home", "skills", "projects", "contact"].map((item) => (
+            {["home", "experience", "skills", "projects", "contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
@@ -112,7 +112,7 @@ const Navigation = () => {
           }`}
         >
           <div className="flex flex-col items-center justify-center h-full space-y-8">
-            {["home", "skills", "projects", "contact"].map((item) => (
+            {["home", "experience", "skills", "projects", "contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
