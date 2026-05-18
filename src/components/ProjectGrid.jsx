@@ -6,6 +6,15 @@ import appstore_icon from "/icons8-app-store.svg";
 
 const projects = [
   {
+    title: "AI Developer Tools",
+    company: "Motorola Solutions",
+    description:
+      "Suite of 3 AI-powered tools built for the engineering team — used daily by 25+ engineers. Commit & PR agent (auto-generates messages from diffs), PLTUI log analyser (cut debug time from 20 → 5 min by converting raw PTT logs into a conversational timeline view), and a postmortem generator that maps incidents chronologically for fast root-cause detection.",
+    tags: ["LLM APIs", "Node.js", "GitHub API", "Log Analysis", "AI Tool Building", "Prompt Design"],
+    featured: true,
+    year: "2024–Present",
+  },
+  {
     title: "PTT on Wave",
     company: "Motorola Solutions",
     description:

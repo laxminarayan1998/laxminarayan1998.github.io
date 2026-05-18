@@ -13,10 +13,10 @@ const experiences = [
     period: "May 2023 – Present",
     current: true,
     highlights: [
-      "Migrating the app's frontend from ExtJS to Flutter with BLoC state management.",
-      "Built custom internal libraries — reduced third-party reliance, gave the team full control.",
-      "Implemented video calling with native view embedding via Method Channels.",
-      "Introduced AI-assisted workflows and tooling to help the team ship faster.",
+      "Migrating the PTT app's frontend from ExtJS to Flutter with BLoC state management and full native platform integration.",
+      "Built 3 AI-powered developer tools used daily by 25+ engineers: a commit & PR agent, a PLTUI log analyser (cut debug time from 20 → 5 min), and a postmortem generator with timeline-based incident views.",
+      "Built custom internal libraries — reduced third-party reliance, gave the team full control over the codebase.",
+      "Implemented video calling with native view embedding via Method Channels (Android/Java + iOS/Obj-C).",
     ],
   },
   {

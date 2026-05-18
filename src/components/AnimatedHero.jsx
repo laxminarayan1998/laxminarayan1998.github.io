@@ -5,7 +5,7 @@ import profilePic from "/nryn_profile_pic.webp";
 
 const chips = [
   "Flutter", "Dart", "Firebase", "BLoC", "Node.js",
-  "AWS", "Prompt Engineering", "AI Tools", "Method Channels", "Android · iOS",
+  "LLM APIs", "AI Tool Builder", "Prompt Design", "Method Channels", "Android · iOS", "Full-Stack",
 ];
 
 const container = {
@@ -98,7 +98,7 @@ const AnimatedHero = () => {
               variants={fadeUp}
               className="text-sm md:text-base font-mono mb-3 tracking-wide text-gray-500 dark:text-gray-400"
             >
-              Flutter dev &nbsp;·&nbsp; AI tinkerer &nbsp;·&nbsp; Tool builder
+              Full-stack engineer &nbsp;·&nbsp; AI tool-builder &nbsp;·&nbsp; Forward Deployed
             </motion.p>
 
             {/* Description */}
@@ -106,7 +106,7 @@ const AnimatedHero = () => {
               variants={fadeUp}
               className="text-base md:text-lg max-w-lg mb-10 leading-relaxed text-gray-600 dark:text-gray-300"
             >
-              5+ years shipping mobile apps. I explore tools obsessively, build things that make teams faster, and know how to get real results out of AI.
+              5+ years shipping production systems. I build AI-powered tools that people actually use — a log analyser that cut my team's debug time from 20 to 5 minutes, a commit & PR agent, a postmortem generator. All used daily by 25+ engineers. Now shifting full-time into AI-native and Forward Deployed roles.
             </motion.p>
 
             {/* CTAs */}

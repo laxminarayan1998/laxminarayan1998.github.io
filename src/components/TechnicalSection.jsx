@@ -14,15 +14,16 @@ const bentoItems = [
     tags: ["BLoC", "Provider", "GetX", "Method Channels", "Flutter Web", "Flutter TV"],
   },
   {
-    category: "AI & Prompt Engineering",
+    category: "AI & Automation",
     col: "col-span-12 md:col-span-4",
     highlight: true,
-    description: "I know how to talk to AI and ship real products with it — not just chat.",
+    description: "Full-stack depth makes my prompts precise — I know the system, so I know what to ask. 3 AI tools in production, 25+ daily users.",
     skills: [
-      { name: "Prompt Engineering", level: 90 },
-      { name: "AI-assisted Dev", level: 88 },
-      { name: "Tool Building w/ AI", level: 85 },
+      { name: "Prompt Design", level: 92 },
+      { name: "LLM API Integration", level: 88 },
+      { name: "AI Tool Development", level: 90 },
     ],
+    tags: ["OpenAI", "Gemini", "Anthropic", "Workflow Automation", "GitHub API"],
   },
   {
     category: "Native & Backend",
