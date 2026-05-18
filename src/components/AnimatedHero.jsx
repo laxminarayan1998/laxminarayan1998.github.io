@@ -25,7 +25,7 @@ const AnimatedHero = () => {
 
   const downloadResume = () => {
     window.open(
-      "https://drive.google.com/file/d/12k751qMq8yj_1d2f-fbf-HPWLxp7hUD9/view?usp=sharing",
+      "https://drive.google.com/file/d/104dUFHOrXVpzAfR46vy1U5y7EZ1SW66S/view?usp=share_link",
       "_blank"
     );
   };
