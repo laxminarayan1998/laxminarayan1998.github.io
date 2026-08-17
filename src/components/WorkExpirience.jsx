@@ -37,7 +37,7 @@ const experiences = [
 
 const WorkExperience = () => {
   return (
-    <section id="experience" className="relative py-32 px-6 md:px-16 transition-colors duration-300 bg-white dark:bg-[#0a0f0d]">
+    <section id="experience" className="relative py-32 px-6 md:px-16 transition-colors duration-300 bg-[#f6faf7] dark:bg-[#0a0f0d]">
       <div className="max-w-5xl mx-auto">
 
         <motion.div

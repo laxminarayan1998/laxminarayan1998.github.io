@@ -1,11 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Brain, Wrench, MessageSquare, Cable, Layers, GitBranch, Smartphone } from "lucide-react";
+import { SiFlutter, SiDart, SiFirebase, SiNodedotjs } from "react-icons/si";
 import profilePic from "/nryn_profile_pic.webp";
 
 const chips = [
-  "Flutter", "Dart", "Firebase", "BLoC", "Node.js",
-  "LLM APIs", "AI Tool Builder", "Prompt Design", "Method Channels", "Android · iOS", "Full-Stack",
+  { label: "Flutter", icon: SiFlutter },
+  { label: "Dart", icon: SiDart },
+  { label: "Firebase", icon: SiFirebase },
+  { label: "BLoC", icon: GitBranch },
+  { label: "Node.js", icon: SiNodedotjs },
+  { label: "LLM APIs", icon: Brain },
+  { label: "AI Tool Builder", icon: Wrench },
+  { label: "Prompt Design", icon: MessageSquare },
+  { label: "Method Channels", icon: Cable },
+  { label: "Android · iOS", icon: Smartphone },
+  { label: "Full-Stack", icon: Layers },
 ];
 
 const container = {
@@ -133,14 +143,15 @@ const AnimatedHero = () => {
 
             {/* Skill chips */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
-              {chips.map((chip, i) => (
+              {chips.map(({ label, icon: Icon }, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 text-xs rounded-full font-mono font-medium transition-all duration-300 cursor-default
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full font-mono font-medium transition-all duration-300 cursor-default
                     bg-white border border-gray-300 text-gray-700 shadow-sm hover:bg-green-50 hover:border-green-400 hover:text-green-700
                     dark:bg-white/[0.08] dark:border-white/[0.22] dark:text-gray-200 dark:hover:bg-[#4ade80]/15 dark:hover:border-[#4ade80]/70 dark:hover:text-[#4ade80]"
                 >
-                  {chip}
+                  {Icon && <Icon className="w-3.5 h-3.5" />}
+                  {label}
                 </span>
               ))}
             </motion.div>

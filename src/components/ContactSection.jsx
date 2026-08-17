@@ -19,7 +19,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-32 px-6 md:px-16 overflow-hidden transition-colors duration-300 bg-white dark:bg-[#0a0f0d]">
+    <section id="contact" className="relative py-32 px-6 md:px-16 overflow-hidden transition-colors duration-300 bg-[#f6faf7] dark:bg-[#0a0f0d]">
 
       {/* Ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none">
