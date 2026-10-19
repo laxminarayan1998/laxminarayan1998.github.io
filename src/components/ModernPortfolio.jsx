@@ -21,8 +21,9 @@ const ModernPortfolio = () => {
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t transition-colors duration-300 border-gray-200 dark:border-white/[0.06]">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-2 sm:gap-4 text-center">
           <p className="text-sm font-mono text-gray-400 dark:text-gray-600">© 2026 NRYN</p>
+          <p className="text-sm font-mono text-gray-400 dark:text-gray-600">Updated {__BUILD_TIME__}</p>
           <Link
             to="/privacy-policy"
             className="text-sm transition-colors duration-300 text-gray-400 hover:text-green-600 dark:text-gray-600 dark:hover:text-[#4ade80]"
